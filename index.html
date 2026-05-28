@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://flowcetra.com/">
 <meta property="og:title" content="FlowCetra — Operational Web Apps Built for Real Businesses">
 <meta property="og:description" content="Replace spreadsheets and manual workflows with custom operational web apps. No subscriptions. Live in days. Built for contractors, auto shops, inspectors, and more.">
-<meta property="og:image" content="https://flowcetra.com/og-image.png">
+<meta property="og:image" content="https://ppi.is-best.net/pictures/flow.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="FlowCetra">
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@flowcetra">
 <meta name="twitter:title" content="FlowCetra — Operational Web Apps for Real Businesses">
 <meta name="twitter:description" content="Custom web apps that replace spreadsheets. No subscriptions. No hidden fees. Live in days.">
-<meta name="twitter:image" content="https://flowcetra.com/og-image.png">
+<meta name="twitter:image" content="https://ppi.is-best.net/pictures/flow.png">
 
 <!-- ═══════════════════════════════════════
      STRUCTURED DATA (JSON-LD)
@@ -45,7 +45,7 @@
   "@type": "Organization",
   "name": "FlowCetra",
   "url": "https://flowcetra.com",
-  "logo": "https://flowcetra.com/favicon.svg",
+  "logo": "https://ppi.is-best.net/pictures/flow.png",
   "description": "FlowCetra builds operational web apps that replace spreadsheets and manual workflows for small and mid-size businesses across 12+ industries.",
   "sameAs": ["https://www.youtube.com/@flowcetra"],
   "contactPoint": {
@@ -69,8 +69,8 @@
 <!-- ═══════════════════════════════════════
      FAVICON (inline SVG — no file needed)
 ════════════════════════════════════════ -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230d0f12'/%3E%3Ccircle cx='16' cy='16' r='6' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%230d0f12'/%3E%3Ccircle cx='16' cy='7' r='2' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='25' r='2' fill='url(%23g)'/%3E%3Ccircle cx='7' cy='16' r='2' fill='url(%23g)'/%3E%3Ccircle cx='25' cy='16' r='2' fill='url(%23g)'/%3E%3C/svg%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230d0f12'/%3E%3Ccircle cx='16' cy='16' r='6' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%230d0f12'/%3E%3Ccircle cx='16' cy='7' r='2' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='25' r='2' fill='url(%23g)'/%3E%3Ccircle cx='7' cy='16' r='2' fill='url(%23g)'/%3E%3Ccircle cx='25' cy='16' r='2' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="https://ppi.is-best.net/pictures/flow.png">
+<link rel="apple-touch-icon" href="https://ppi.is-best.net/pictures/flow.png">
 <meta name="theme-color" content="#0d0f12">
 <meta name="msapplication-TileColor" content="#0d0f12">
 
@@ -118,19 +118,34 @@ nav{
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
+.nav-logo-link{text-decoration:none;display:flex;align-items:center}
 .nav-logo{
-  font-size:1.25rem;font-weight:700;letter-spacing:-.02em;
-  display:flex;align-items:center;gap:8px;
+  display:flex;align-items:center;gap:10px;
 }
-.nav-logo span{
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
+.logo-img{
+  width:32px;height:32px;object-fit:contain;
+  border-radius:7px;flex-shrink:0;
+  filter:drop-shadow(0 0 8px rgba(59,130,246,.45));
+  transition:filter .3s;
+}
+.nav-logo-link:hover .logo-img{filter:drop-shadow(0 0 14px rgba(6,182,212,.7))}
+.logo-img-lg{width:40px;height:40px;border-radius:9px}
+.logo-wordmark{
+  font-size:1.3rem;font-weight:800;letter-spacing:-.04em;
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  line-height:1;
+}
+.logo-wordmark em{
+  font-style:normal;
+  background:linear-gradient(135deg,#3b82f6 0%,#06b6d4 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
 }
-.logo-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
-  flex-shrink:0;
-}
+.logo-wordmark-lg{font-size:1.5rem;font-weight:800;letter-spacing:-.045em}
+.footer-logo-wrap{display:flex;align-items:center;gap:10px}
+/* keep .logo-dot for any residual references */
+.logo-dot{display:none}
 .nav-links{display:flex;align-items:center;gap:32px;font-size:.875rem;color:var(--text2)}
 .nav-links a:hover{color:var(--text);transition:.2s}
 .nav-cta{
@@ -700,7 +715,13 @@ h2.section-title{
   position:absolute;top:0;left:0;width:100%;height:100%;border:none;
 }
 
-/* CONTACT MODAL */
+/* PLATFORM VIDEO SHORTS (9:16 portrait) */
+.platform-video-shorts{
+  padding-top:100% !important; /* square crop for card consistency */
+}
+.platform-video-shorts iframe{
+  top:-25%;height:150% !important; /* center the portrait video vertically */
+}
 .modal-overlay{
   display:none;position:fixed;inset:0;z-index:200;
   background:rgba(0,0,0,.75);backdrop-filter:blur(8px);
@@ -869,10 +890,12 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <div class="logo-dot"></div>
-    Flow<span>Cetra</span>
-  </div>
+  <a href="#" class="nav-logo-link">
+    <div class="nav-logo">
+      <img src="https://ppi.is-best.net/pictures/flow.png" alt="FlowCetra" class="logo-img">
+      <span class="logo-wordmark">Flow<em>Cetra</em></span>
+    </div>
+  </a>
   <div class="nav-links">
     <a href="#platforms">Platforms</a>
     <a href="#how-it-works">How It Works</a>
@@ -893,7 +916,7 @@ footer{
   <p class="hero-sub">FlowCetra helps businesses eliminate repetitive spreadsheet work, manual data entry, and scattered communication with clean operational web apps built for real workflows.</p>
   <div class="hero-btns">
     <a href="#platforms"><button class="btn-primary no-modal">Explore Platforms</button></a>
-    <button class="btn-secondary open-modal">See Live Systems →</button>
+    <a href="#platforms"><button class="btn-secondary no-modal">See Live Systems →</button></a>
   </div>
   <div class="hero-dashboard">
     <div class="dashboard-wrapper">
@@ -1046,35 +1069,7 @@ footer{
   </div>
 </div>
 
-<!-- TRUST BAR -->
-<div style="background:var(--bg);border-bottom:1px solid var(--border)">
-  <div class="trust-bar">
-    <div class="trust-metric">
-      <div class="trust-metric-val">400+</div>
-      <div class="trust-metric-label">Workflows Automated</div>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-metric">
-      <div class="trust-metric-val">12+</div>
-      <div class="trust-metric-label">Industries Served</div>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-metric">
-      <div class="trust-metric-val">80%</div>
-      <div class="trust-metric-label">Reduction in Manual Work</div>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-metric">
-      <div class="trust-metric-val">4</div>
-      <div class="trust-metric-label">Live Operational Platforms</div>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-metric">
-      <div class="trust-metric-val">Days</div>
-      <div class="trust-metric-label">Average Setup Time</div>
-    </div>
-  </div>
-</div>
+
 
 <!-- PROBLEM / SOLUTION -->
 <section class="problem-solution" id="solution">
@@ -1164,27 +1159,8 @@ footer{
 
       <!-- Expn.site -->
       <div class="platform-card">
-        <div class="platform-mockup">
-          <div class="platform-mini-dash">
-            <div class="pmini-bar">
-              <div class="pmini-dot" style="background:#ef4444"></div>
-              <div class="pmini-dot" style="background:#f59e0b"></div>
-              <div class="pmini-dot" style="background:#10b981"></div>
-            </div>
-            <div class="pmini-content">
-              <div class="pmini-row">
-                <div class="pmini-label">Monthly Budget Overview</div>
-                <div class="status-badge green" style="font-size:.55rem">On Track</div>
-              </div>
-              <div class="pmini-row"><div class="pmini-label">Operations</div><div class="pmini-bar2 fill" style="width:72%"></div><div class="pmini-val">$8,640</div></div>
-              <div class="pmini-row"><div class="pmini-label">Payroll</div><div class="pmini-bar2 fill" style="width:85%"></div><div class="pmini-val">$24,000</div></div>
-              <div class="pmini-row"><div class="pmini-label">Equipment</div><div class="pmini-bar2 fill" style="width:40%"></div><div class="pmini-val">$2,100</div></div>
-              <div class="pmini-row" style="margin-top:4px">
-                <div class="pmini-label" style="font-size:.6rem;color:var(--text3)">expn.site</div>
-                <div class="pmini-val" style="color:var(--green)">Under budget</div>
-              </div>
-            </div>
-          </div>
+        <div class="platform-video-wrap platform-video-shorts">
+          <iframe src="https://www.youtube.com/embed/wx4MbNQ24XU" title="Expn.site Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="platform-content">
           <div class="platform-tag">Finance</div>
@@ -1407,9 +1383,9 @@ footer{
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="nav-logo" style="margin-bottom:0">
-          <div class="logo-dot"></div>
-          Flow<span>Cetra</span>
+        <div class="nav-logo footer-logo-wrap" style="margin-bottom:0">
+          <img src="https://ppi.is-best.net/pictures/flow.png" alt="FlowCetra" class="logo-img logo-img-lg">
+          <span class="logo-wordmark logo-wordmark-lg">Flow<em>Cetra</em></span>
         </div>
         <p>Operational web apps built for businesses that are done wasting time on spreadsheets and manual workflows. Simple. Fast. Yours.</p>
         <div class="footer-social">
