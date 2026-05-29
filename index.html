@@ -60,7 +60,8 @@
       {"@type": "Offer", "name": "Garaj.online", "description": "Operational web app for mechanic shops and auto businesses", "url": "https://garaj.online"},
       {"@type": "Offer", "name": "PPIPro.click", "description": "Pre-purchase inspection platform with PDF generation", "url": "https://ppipro.click"},
       {"@type": "Offer", "name": "Kia.today", "description": "Contractor invoicing and remodeling workflow platform", "url": "https://kia.today"},
-      {"@type": "Offer", "name": "Expn.site", "description": "Expense tracking and operational budgeting web app", "url": "https://expn.site"}
+      {"@type": "Offer", "name": "Expn.site", "description": "Expense tracking and operational budgeting web app", "url": "https://expn.site"},
+      {"@type": "Offer", "name": "Dealership.work", "description": "Dealership management web app for inventory, sales, and customer workflows", "url": "https://dealership.work"}
     ]
   }
 }
@@ -71,32 +72,44 @@
 ════════════════════════════════════════ -->
 <link rel="icon" type="image/png" href="https://ppi.is-best.net/pictures/flow.png">
 <link rel="apple-touch-icon" href="https://ppi.is-best.net/pictures/flow.png">
-<meta name="theme-color" content="#0d0f12">
-<meta name="msapplication-TileColor" content="#0d0f12">
+<meta name="theme-color" content="#08090c">
+<meta name="msapplication-TileColor" content="#08090c">
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0d0f12;
-  --bg2:#111318;
-  --bg3:#161920;
-  --bg4:#1c1f28;
-  --card:#181b24;
-  --border:#ffffff12;
-  --border2:#ffffff1e;
-  --text:#f0f2f7;
-  --text2:#9ca3af;
-  --text3:#6b7280;
+  --bg:#08090c;
+  --bg2:#0c0e13;
+  --bg3:#101319;
+  --bg4:#161a22;
+  --card:#0e1117;
+  --card2:#131722;
+  --border:#ffffff0d;
+  --border2:#ffffff17;
+  --border3:#ffffff26;
+  --text:#f5f7fb;
+  --text2:#a7afbe;
+  --text3:#697080;
   --accent:#3b82f6;
-  --accent2:#60a5fa;
-  --cyan:#06b6d4;
-  --cyan2:#22d3ee;
+  --accent2:#7aa8ff;
+  --cyan:#22d3ee;
+  --cyan2:#67e8f9;
   --green:#10b981;
-  --red:#ef4444;
-  --amber:#f59e0b;
-  --radius:14px;
-  --radius2:20px;
+  --red:#f87171;
+  --amber:#fbbf24;
+  --grad:linear-gradient(135deg,#3b82f6 0%,#22d3ee 100%);
+  --grad-soft:linear-gradient(135deg,rgba(59,130,246,.16),rgba(34,211,238,.12));
+  --ring:0 0 0 3px rgba(59,130,246,.3);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+  --shadow:0 12px 40px rgba(0,0,0,.45);
+  --shadow-lg:0 36px 90px rgba(0,0,0,.6);
+  --maxw:1240px;
+  --radius:12px;
+  --radius2:18px;
+  --font-display:'Archivo','DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
 body{
@@ -105,123 +118,176 @@ body{
   color:var(--text);
   line-height:1.6;
   overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"ss01" 1,"cv01" 1;
+}
+/* fine grain texture for depth */
+body::before{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  opacity:.025;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 a{color:inherit;text-decoration:none}
 img{max-width:100%}
+::selection{background:rgba(59,130,246,.32);color:#fff}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+/* shared icon system */
+.ic{width:1em;height:1em;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;display:block}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;height:64px;
-  background:rgba(13,15,18,0.82);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
+  padding:0 max(5%,24px);height:68px;
+  background:rgba(8,9,12,0.6);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s;
 }
+nav.scrolled{background:rgba(8,9,12,0.82);border-bottom-color:var(--border2)}
 .nav-logo-link{text-decoration:none;display:flex;align-items:center}
 .nav-logo{
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;gap:11px;
 }
 .logo-img{
-  width:32px;height:32px;object-fit:contain;
+  width:30px;height:30px;object-fit:contain;
   border-radius:7px;flex-shrink:0;
-  filter:drop-shadow(0 0 8px rgba(59,130,246,.45));
-  transition:filter .3s;
+  filter:drop-shadow(0 0 10px rgba(59,130,246,.4));
+  transition:filter .3s,transform .3s;
 }
-.nav-logo-link:hover .logo-img{filter:drop-shadow(0 0 14px rgba(6,182,212,.7))}
-.logo-img-lg{width:40px;height:40px;border-radius:9px}
+.nav-logo-link:hover .logo-img{filter:drop-shadow(0 0 16px rgba(34,211,238,.65));transform:rotate(-4deg)}
+.logo-img-lg{width:38px;height:38px;border-radius:9px}
 .logo-wordmark{
-  font-size:1.3rem;font-weight:800;letter-spacing:-.04em;
+  font-size:1.28rem;font-weight:800;letter-spacing:-.04em;
   color:var(--text);
-  font-family:'DM Sans',sans-serif;
+  font-family:var(--font-display);
   line-height:1;
 }
 .logo-wordmark em{
   font-style:normal;
-  background:linear-gradient(135deg,#3b82f6 0%,#06b6d4 100%);
+  background:var(--grad);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
-.logo-wordmark-lg{font-size:1.5rem;font-weight:800;letter-spacing:-.045em}
-.footer-logo-wrap{display:flex;align-items:center;gap:10px}
-/* keep .logo-dot for any residual references */
+.logo-wordmark-lg{font-size:1.45rem;font-weight:800;letter-spacing:-.04em}
+.footer-logo-wrap{display:flex;align-items:center;gap:11px}
 .logo-dot{display:none}
-.nav-links{display:flex;align-items:center;gap:32px;font-size:.875rem;color:var(--text2)}
-.nav-links a:hover{color:var(--text);transition:.2s}
+.nav-links{display:flex;align-items:center;gap:34px;font-size:.875rem;font-weight:500;color:var(--text2)}
+.nav-links a{position:relative;padding:4px 0;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--grad);transition:right .25s ease}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{right:0}
 .nav-cta{
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
-  color:#fff;border:none;border-radius:8px;
-  padding:9px 20px;font-size:.875rem;font-weight:600;
-  cursor:pointer;font-family:inherit;
-  transition:opacity .2s,transform .15s;
+  background:var(--grad);
+  color:#fff;border:none;border-radius:9px;
+  padding:10px 20px;font-size:.875rem;font-weight:600;
+  cursor:pointer;font-family:inherit;letter-spacing:-.01em;
+  box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 6px 18px rgba(59,130,246,.3);
+  transition:opacity .2s,transform .15s,box-shadow .2s;
 }
-.nav-cta:hover{opacity:.9;transform:translateY(-1px)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 10px 26px rgba(59,130,246,.42)}
 .nav-mobile-btn{display:none;background:none;border:none;color:var(--text2);cursor:pointer;padding:4px}
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:92vh;
   display:flex;flex-direction:column;justify-content:center;align-items:center;
-  padding:100px 5% 80px;
+  padding:130px 5% 90px;
   position:relative;overflow:hidden;
   text-align:center;
 }
 .hero-glow{
   position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 70% 50% at 50% -10%,rgba(59,130,246,.18) 0%,transparent 70%),
-    radial-gradient(ellipse 40% 30% at 80% 60%,rgba(6,182,212,.1) 0%,transparent 60%),
-    radial-gradient(ellipse 30% 30% at 10% 70%,rgba(59,130,246,.08) 0%,transparent 60%);
+    radial-gradient(ellipse 60% 45% at 50% -5%,rgba(59,130,246,.2) 0%,transparent 65%),
+    radial-gradient(ellipse 34% 30% at 82% 55%,rgba(34,211,238,.1) 0%,transparent 60%),
+    radial-gradient(ellipse 30% 34% at 12% 70%,rgba(59,130,246,.08) 0%,transparent 60%);
 }
+/* faint engineered grid */
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 35%,#000 0%,transparent 78%);
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 35%,#000 0%,transparent 78%);
+}
+.hero>*{position:relative;z-index:2}
 .hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);
-  border-radius:100px;padding:6px 16px;font-size:.8125rem;color:var(--accent2);
-  font-weight:500;margin-bottom:28px;
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  border-radius:100px;padding:7px 8px 7px 16px;font-size:.8125rem;color:var(--text2);
+  font-weight:500;margin-bottom:30px;
+  backdrop-filter:blur(8px);
+  animation:fadeUp .7s cubic-bezier(.2,.7,.3,1) both;
 }
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2.4s infinite}
+.hero-badge .badge-pill{
+  font-size:.6875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--accent2);background:rgba(59,130,246,.14);
+  border:1px solid rgba(59,130,246,.22);border-radius:100px;padding:3px 9px;margin-left:2px;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .hero h1{
-  font-size:clamp(2.5rem,6vw,4.5rem);
-  font-weight:700;letter-spacing:-.03em;
-  line-height:1.1;
-  max-width:900px;
-  margin-bottom:24px;
+  font-family:var(--font-display);
+  font-size:clamp(2.6rem,6.2vw,4.7rem);
+  font-weight:800;letter-spacing:-.045em;
+  line-height:1.03;
+  max-width:960px;
+  margin-bottom:26px;
+  animation:fadeUp .7s cubic-bezier(.2,.7,.3,1) .08s both;
 }
 .hero h1 em{
   font-style:normal;
-  background:linear-gradient(135deg,#3b82f6 0%,#06b6d4 50%,#60a5fa 100%);
+  background:linear-gradient(115deg,#7aa8ff 0%,#3b82f6 40%,#22d3ee 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 .hero-sub{
-  font-size:clamp(1rem,2vw,1.25rem);
-  color:var(--text2);max-width:680px;
-  margin-bottom:44px;line-height:1.7;font-weight:400;
+  font-size:clamp(1.0625rem,2vw,1.28rem);
+  color:var(--text2);max-width:640px;
+  margin-bottom:42px;line-height:1.65;font-weight:400;
+  animation:fadeUp .7s cubic-bezier(.2,.7,.3,1) .16s both;
 }
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:80px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px;animation:fadeUp .7s cubic-bezier(.2,.7,.3,1) .24s both}
+.hero-microtrust{
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center;
+  font-size:.8125rem;color:var(--text3);font-weight:500;
+  animation:fadeUp .7s cubic-bezier(.2,.7,.3,1) .32s both;
+}
+.hero-microtrust span{display:inline-flex;align-items:center;gap:7px}
+.hero-microtrust .ic{font-size:15px;color:var(--cyan)}
 .btn-primary{
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
-  color:#fff;border:none;border-radius:10px;
-  padding:14px 28px;font-size:1rem;font-weight:600;
+  background:var(--grad);
+  color:#fff;border:none;border-radius:11px;
+  padding:15px 30px;font-size:1rem;font-weight:600;letter-spacing:-.01em;
   cursor:pointer;font-family:inherit;
-  transition:transform .15s,box-shadow .2s;
-  box-shadow:0 4px 24px rgba(59,130,246,.35);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .15s,box-shadow .25s;
+  box-shadow:0 1px 0 rgba(255,255,255,.2) inset,0 8px 30px rgba(59,130,246,.4);
 }
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.45)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.28) inset,0 14px 40px rgba(59,130,246,.5)}
+.btn-primary .ic{font-size:17px}
 .btn-secondary{
-  background:transparent;
-  color:var(--cyan2);
-  border:1.5px solid rgba(6,182,212,.45);
-  border-radius:10px;padding:14px 28px;font-size:1rem;font-weight:600;
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  border:1px solid var(--border2);
+  border-radius:11px;padding:15px 30px;font-size:1rem;font-weight:600;letter-spacing:-.01em;
   cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;gap:8px;
+  backdrop-filter:blur(8px);
   transition:border-color .2s,color .2s,background .2s,transform .15s;
 }
 .btn-secondary:hover{
-  border-color:var(--cyan);
-  background:rgba(6,182,212,.08);
-  color:#fff;
-  transform:translateY(-1px);
+  border-color:var(--border3);
+  background:rgba(255,255,255,.06);
+  transform:translateY(-2px);
 }
+.btn-secondary .ic{font-size:17px;color:var(--cyan2)}
 
 /* DASHBOARD MOCKUP */
 .hero-dashboard{
@@ -330,154 +396,147 @@ nav{
 
 /* VALUE STRIP */
 .value-strip{
-  background:var(--bg2);
+  background:linear-gradient(180deg,var(--bg2),var(--bg));
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
-  padding:40px 5%;
-  overflow:hidden;
+  padding:44px 5%;
+  overflow:hidden;position:relative;z-index:2;
 }
 .value-strip-inner{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:16px;max-width:1300px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;max-width:var(--maxw);margin:0 auto;
 }
 .value-item{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 18px;
-  background:rgba(255,255,255,.03);
+  display:flex;align-items:center;gap:13px;
+  padding:15px 18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
   border:1px solid var(--border);
-  border-radius:10px;
-  transition:border-color .2s,background .2s;
+  border-radius:12px;
+  transition:border-color .25s,transform .25s,background .25s;
 }
-.value-item:hover{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.06)}
+.value-item:hover{border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.06);transform:translateY(-3px)}
 .value-icon{
-  width:32px;height:32px;border-radius:8px;
-  background:rgba(59,130,246,.12);
+  width:36px;height:36px;border-radius:9px;
+  background:var(--grad-soft);border:1px solid rgba(59,130,246,.22);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:14px;
+  flex-shrink:0;color:var(--accent2);font-size:17px;
 }
-.value-text{font-size:.8125rem;font-weight:500;color:var(--text2)}
+.value-text{font-size:.84rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
 
 /* TRUST BAR */
 .trust-bar{
-  padding:48px 5%;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:48px;
-  max-width:1300px;margin:0 auto;
+  padding:52px 5%;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:56px;
+  max-width:var(--maxw);margin:0 auto;
 }
 .trust-metric{text-align:center}
 .trust-metric-val{
-  font-size:2rem;font-weight:700;letter-spacing:-.03em;
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  font-family:var(--font-display);
+  font-size:2.4rem;font-weight:800;letter-spacing:-.04em;
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.trust-metric-label{font-size:.8125rem;color:var(--text3);margin-top:4px}
-.trust-divider{width:1px;height:48px;background:var(--border)}
+.trust-metric-label{font-size:.8125rem;color:var(--text3);margin-top:4px;font-weight:500}
+.trust-divider{width:1px;height:46px;background:var(--border2)}
 
 /* SECTION STYLES */
-section{padding:100px 5%}
-.section-inner{max-width:1300px;margin:0 auto}
+section{padding:112px 5%;position:relative;z-index:2}
+.section-inner{max-width:var(--maxw);margin:0 auto}
 .section-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent2);margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:18px;
 }
-.section-tag::before{content:'';width:16px;height:1px;background:var(--accent2)}
+.section-tag::before{content:'';width:22px;height:1px;background:linear-gradient(90deg,transparent,var(--accent2))}
 h2.section-title{
-  font-size:clamp(1.75rem,3.5vw,2.75rem);
-  font-weight:700;letter-spacing:-.03em;
-  line-height:1.15;margin-bottom:16px;
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem,3.6vw,2.9rem);
+  font-weight:800;letter-spacing:-.035em;
+  line-height:1.08;margin-bottom:18px;
 }
 .section-sub{
   font-size:1.0625rem;color:var(--text2);
-  max-width:600px;line-height:1.7;
+  max-width:620px;line-height:1.7;
 }
 
 /* PROBLEM/SOLUTION */
 .problem-solution{background:var(--bg2)}
-.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px}
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px}
 .ps-side{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius2);padding:36px;
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
+  border-radius:var(--radius2);padding:34px;
   position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
 }
 .ps-side::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
 }
-.ps-side.before::before{background:linear-gradient(90deg,#ef4444,#f59e0b)}
-.ps-side.after::before{background:linear-gradient(90deg,#3b82f6,#06b6d4)}
+.ps-side.before::before{background:linear-gradient(90deg,#f87171,#fbbf24)}
+.ps-side.after::before{background:var(--grad)}
 .ps-label{
-  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  margin-bottom:24px;display:flex;align-items:center;gap:8px;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:9px;
 }
-.ps-label.before{color:#ef4444}
-.ps-label.after{color:var(--cyan)}
-.ps-items{display:flex;flex-direction:column;gap:10px}
+.ps-label .ic{font-size:17px}
+.ps-label.before{color:#f87171}
+.ps-label.after{color:var(--cyan2)}
+.ps-items{display:flex;flex-direction:column;gap:8px}
 .ps-item{
   display:flex;align-items:flex-start;gap:12px;
   padding:12px 14px;border-radius:10px;
-  font-size:.875rem;
+  font-size:.875rem;line-height:1.45;
+  transition:transform .2s;
 }
-.ps-item.before{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);color:var(--text2)}
-.ps-item.after{background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.12);color:var(--text2)}
-.ps-item-icon{flex-shrink:0;font-size:14px;margin-top:1px}
+.ps-item:hover{transform:translateX(3px)}
+.ps-item.before{background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.13);color:var(--text2)}
+.ps-item.after{background:rgba(34,211,238,.05);border:1px solid rgba(34,211,238,.13);color:var(--text2)}
+.ps-item-icon{flex-shrink:0;font-size:16px;margin-top:1px}
+.ps-item.before .ps-item-icon{color:#f87171}
+.ps-item.after .ps-item-icon{color:var(--cyan2)}
 
 /* PLATFORMS */
 .platforms{background:var(--bg)}
 .platforms-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;margin-top:60px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  gap:22px;margin-top:60px;
 }
 .platform-card{
-  background:var(--card);border:1px solid var(--border);
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
   border-radius:var(--radius2);overflow:hidden;
-  transition:transform .25s,border-color .25s,box-shadow .25s;
-  cursor:pointer;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s;
+  position:relative;
+}
+.platform-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:0 1px 0 rgba(255,255,255,.05) inset;
 }
 .platform-card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(59,130,246,.35);
-  box-shadow:0 24px 64px rgba(0,0,0,.4),0 0 0 1px rgba(59,130,246,.1);
+  transform:translateY(-8px);
+  border-color:rgba(59,130,246,.45);
+  box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(59,130,246,.15),0 0 60px -20px rgba(34,211,238,.4);
 }
-.platform-mockup{
-  height:200px;background:var(--bg3);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  padding:20px;
-}
-.platform-mini-dash{
-  width:100%;background:#111318;border:1px solid rgba(255,255,255,.08);
-  border-radius:10px;overflow:hidden;
-}
-.pmini-bar{
-  background:#0a0c0f;padding:6px 10px;
-  display:flex;gap:5px;border-bottom:1px solid rgba(255,255,255,.06);
-}
-.pmini-dot{width:6px;height:6px;border-radius:50%}
-.pmini-content{padding:12px;display:flex;flex-direction:column;gap:6px}
-.pmini-row{display:flex;align-items:center;gap:8px}
-.pmini-label{font-size:.625rem;color:var(--text3);flex:1}
-.pmini-bar2{height:6px;border-radius:3px;background:rgba(255,255,255,.06)}
-.pmini-bar2.fill{background:linear-gradient(90deg,#3b82f6,#06b6d4)}
-.pmini-val{font-size:.625rem;color:var(--text2);font-family:'DM Mono',monospace}
-.platform-content{padding:28px}
+.platform-content{padding:26px 26px 28px}
 .platform-tag{
-  font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--accent2);margin-bottom:10px;
-  display:flex;align-items:center;gap:6px;
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:11px;
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--grad-soft);border:1px solid rgba(59,130,246,.2);
+  padding:4px 10px;border-radius:100px;
 }
-.platform-tag::before{content:'';width:12px;height:1px;background:var(--accent2)}
-.platform-card h3{font-size:1.1875rem;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
-.platform-card p{font-size:.875rem;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.platform-tag::before{display:none}
+.platform-card h3{font-family:var(--font-display);font-size:1.3rem;font-weight:800;letter-spacing:-.03em;margin-bottom:9px}
+.platform-card p{font-size:.875rem;color:var(--text2);line-height:1.6;margin-bottom:22px}
 .btn-try{
-  display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
-  color:#fff;border:none;border-radius:8px;
-  padding:10px 20px;font-size:.875rem;font-weight:600;
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.04);
+  color:var(--text);border:1px solid var(--border2);border-radius:9px;
+  padding:10px 18px;font-size:.875rem;font-weight:600;letter-spacing:-.01em;
   cursor:pointer;font-family:inherit;
-  transition:transform .15s,box-shadow .2s;
-  box-shadow:0 4px 16px rgba(59,130,246,.3);
+  transition:transform .15s,background .2s,border-color .2s,color .2s;
 }
-.btn-try:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(59,130,246,.4)}
+.btn-try:hover{transform:translateY(-1px);background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(59,130,246,.35)}
 .btn-try svg{transition:transform .2s}
 .btn-try:hover svg{transform:translateX(3px)}
 
@@ -485,173 +544,184 @@ h2.section-title{
 .how-it-works{background:var(--bg2)}
 .steps{
   display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;margin-top:60px;
+  gap:0;margin-top:64px;
   position:relative;
 }
 .steps::before{
   content:'';position:absolute;
-  top:36px;left:calc(12.5% + 18px);right:calc(12.5% + 18px);
-  height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--border2),transparent);
+  top:38px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);
+  height:1px;background:linear-gradient(90deg,transparent,var(--border3),var(--border3),transparent);
   z-index:0;
 }
 .step{
-  padding:0 20px;position:relative;z-index:1;
+  padding:0 22px;position:relative;z-index:1;
   display:flex;flex-direction:column;align-items:center;text-align:center;
 }
 .step-num{
-  width:72px;height:72px;border-radius:50%;
-  background:var(--card);border:1px solid var(--border2);
+  width:76px;height:76px;border-radius:20px;
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
   display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;font-weight:700;
-  color:var(--accent2);margin-bottom:20px;
-  box-shadow:0 4px 24px rgba(59,130,246,.15);
-  position:relative;
+  font-size:1.55rem;font-weight:700;
+  color:var(--accent2);margin-bottom:22px;
+  box-shadow:0 12px 36px rgba(0,0,0,.45),0 0 30px -12px rgba(59,130,246,.5);
+  position:relative;font-family:'DM Mono',monospace;
 }
 .step-num::after{
-  content:'';position:absolute;inset:-4px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(59,130,246,.2),transparent,rgba(6,182,212,.15));
-  z-index:-1;
+  content:'';position:absolute;inset:-1px;border-radius:20px;padding:1px;
+  background:linear-gradient(135deg,rgba(59,130,246,.5),transparent 50%,rgba(34,211,238,.4));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
 }
-.step h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+.step h3{font-size:1.0625rem;font-weight:600;margin-bottom:9px;letter-spacing:-.02em}
 .step p{font-size:.875rem;color:var(--text2);line-height:1.6}
 
 /* REPORTING */
 .reporting{background:var(--bg)}
 .reporting-inner{
   display:grid;grid-template-columns:1fr 1fr;
-  gap:80px;align-items:center;
+  gap:72px;align-items:center;
 }
 .reporting-visual{
-  background:var(--card);border:1px solid var(--border);
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
   border-radius:var(--radius2);overflow:hidden;
-  box-shadow:0 24px 80px rgba(0,0,0,.4);
+  box-shadow:var(--shadow-lg);
 }
 .report-header{
-  background:var(--bg3);border-bottom:1px solid var(--border);
-  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.02);border-bottom:1px solid var(--border2);
+  padding:15px 20px;display:flex;align-items:center;justify-content:space-between;
 }
-.report-title-text{font-size:.875rem;font-weight:600}
+.report-title-text{font-size:.9rem;font-weight:600;letter-spacing:-.01em}
 .report-badge{
-  font-size:.65rem;padding:3px 10px;border-radius:100px;
-  background:rgba(16,185,129,.15);color:#34d399;font-weight:600;
+  font-size:.65rem;padding:4px 11px;border-radius:100px;letter-spacing:.04em;
+  background:rgba(16,185,129,.14);color:#34d399;font-weight:700;border:1px solid rgba(16,185,129,.2);
 }
-.report-body{padding:20px;display:flex;flex-direction:column;gap:14px}
+.report-body{padding:20px;display:flex;flex-direction:column;gap:13px}
 .report-metric{
   display:flex;align-items:center;justify-content:space-between;
-  padding:12px 16px;background:rgba(255,255,255,.02);
-  border:1px solid var(--border);border-radius:10px;
+  padding:13px 16px;background:rgba(255,255,255,.025);
+  border:1px solid var(--border);border-radius:11px;
 }
-.rm-left{display:flex;align-items:center;gap:12px}
+.rm-left{display:flex;align-items:center;gap:13px}
 .rm-icon{
-  width:32px;height:32px;border-radius:8px;
+  width:36px;height:36px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;flex-shrink:0;
+  font-size:16px;flex-shrink:0;
 }
-.rm-label{font-size:.8125rem;color:var(--text2)}
-.rm-val{font-size:1rem;font-weight:700}
-.rm-change{font-size:.7rem;margin-top:2px}
+.rm-label{font-size:.8125rem;color:var(--text3);font-weight:500}
+.rm-val{font-size:1.05rem;font-weight:700;letter-spacing:-.02em}
+.rm-change{font-size:.7rem;margin-top:2px;font-weight:600}
 .rm-change.up{color:var(--green)}
 .report-progress{margin-top:4px}
 .prog-bar{
-  height:4px;border-radius:2px;background:rgba(255,255,255,.06);
+  height:5px;border-radius:3px;background:rgba(255,255,255,.06);
   overflow:hidden;margin-top:6px;
 }
 .prog-fill{
-  height:100%;border-radius:2px;
-  background:linear-gradient(90deg,#3b82f6,#06b6d4);
+  height:100%;border-radius:3px;
+  background:var(--grad);
 }
-.reporting-features{display:flex;flex-direction:column;gap:10px}
+.reporting-features{display:flex;flex-direction:column;gap:9px}
 .rf-item{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 16px;background:rgba(255,255,255,.02);
-  border:1px solid var(--border);border-radius:10px;
-  font-size:.875rem;transition:.2s;
+  display:flex;align-items:center;gap:13px;
+  padding:13px 16px;background:rgba(255,255,255,.02);
+  border:1px solid var(--border);border-radius:11px;
+  font-size:.9rem;font-weight:500;transition:.22s;
 }
-.rf-item:hover{border-color:rgba(59,130,246,.2);background:rgba(59,130,246,.05)}
+.rf-item:hover{border-color:rgba(59,130,246,.25);background:rgba(59,130,246,.05);transform:translateX(3px)}
 .rf-check{
-  width:20px;height:20px;border-radius:50%;
-  background:rgba(16,185,129,.15);
+  width:22px;height:22px;border-radius:7px;
+  background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.25);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:10px;color:#34d399;
+  flex-shrink:0;font-size:11px;color:#34d399;
 }
 
 /* INDUSTRIES */
 .industries{background:var(--bg2)}
 .industries-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));
   gap:14px;margin-top:60px;
 }
 .industry-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:24px 20px;
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
+  border-radius:var(--radius);padding:26px 20px;
   text-align:center;
-  transition:transform .2s,border-color .2s,background .2s;
+  transition:transform .25s,border-color .25s,background .25s,box-shadow .25s;
   cursor:default;
 }
 .industry-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(59,130,246,.3);
-  background:rgba(59,130,246,.06);
+  transform:translateY(-5px);
+  border-color:rgba(59,130,246,.4);
+  background:rgba(59,130,246,.05);
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
 .industry-icon{
-  font-size:28px;margin-bottom:12px;
-  display:block;
-  filter:saturate(0) brightness(1.5);
-  transition:.2s;
+  width:46px;height:46px;margin:0 auto 14px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--grad-soft);border:1px solid rgba(59,130,246,.18);
+  color:var(--accent2);font-size:22px;
+  transition:.25s;
 }
-.industry-card:hover .industry-icon{filter:none}
-.industry-card h4{font-size:.875rem;font-weight:600}
+.industry-card:hover .industry-icon{color:var(--cyan2);border-color:rgba(34,211,238,.4)}
+.industry-card h4{font-size:.875rem;font-weight:600;letter-spacing:-.01em}
 
 /* FEATURES */
 .features{background:var(--bg)}
 .features-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));
   gap:16px;margin-top:60px;
 }
 .feature-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:22px;
-  transition:border-color .2s,transform .2s;
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
+  border-radius:var(--radius);padding:24px;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
 }
-.feature-card:hover{border-color:rgba(59,130,246,.25);transform:translateY(-2px)}
+.feature-card:hover{border-color:rgba(59,130,246,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
 .feature-icon{
-  width:40px;height:40px;border-radius:10px;
-  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);
+  width:44px;height:44px;border-radius:11px;
+  background:var(--grad-soft);border:1px solid rgba(59,130,246,.2);
   display:flex;align-items:center;justify-content:center;
-  font-size:18px;margin-bottom:14px;
+  color:var(--accent2);font-size:20px;margin-bottom:16px;
 }
-.feature-card h4{font-size:.9375rem;font-weight:600;margin-bottom:6px}
-.feature-card p{font-size:.8125rem;color:var(--text2);line-height:1.5}
+.feature-card h4{font-size:.95rem;font-weight:600;margin-bottom:7px;letter-spacing:-.015em}
+.feature-card p{font-size:.8125rem;color:var(--text2);line-height:1.55}
 
 /* PRICING COMPARISON */
 .pricing{background:var(--bg2)}
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;max-width:900px}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;max-width:920px}
 .pricing-card{
-  background:var(--card);border:1px solid var(--border);
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);
   border-radius:var(--radius2);padding:36px;
 }
+.pricing-card.old{opacity:.92}
 .pricing-card.featured{
-  border-color:rgba(59,130,246,.4);
-  background:rgba(59,130,246,.04);
+  border-color:rgba(59,130,246,.45);
+  background:linear-gradient(180deg,rgba(59,130,246,.07),rgba(34,211,238,.02));
   position:relative;overflow:hidden;
+  box-shadow:0 30px 70px -30px rgba(59,130,246,.5);
 }
 .pricing-card.featured::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,#3b82f6,#06b6d4);
+  background:var(--grad);
 }
 .pricing-label{
-  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  margin-bottom:20px;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:22px;
 }
-.pricing-card.featured .pricing-label{color:var(--cyan)}
+.pricing-card.featured .pricing-label{color:var(--cyan2)}
 .pricing-card.old .pricing-label{color:var(--text3)}
-.pricing-items{display:flex;flex-direction:column;gap:8px}
+.pricing-items{display:flex;flex-direction:column;gap:7px}
 .pricing-item{
-  display:flex;align-items:center;gap:10px;
-  font-size:.875rem;color:var(--text2);padding:6px 0;
+  display:flex;align-items:center;gap:11px;
+  font-size:.875rem;color:var(--text2);padding:7px 0;
 }
-.pi-x{color:#ef4444;flex-shrink:0}
-.pi-check{color:var(--cyan);flex-shrink:0}
+.pi-x,.pi-check{flex-shrink:0;display:inline-flex;font-size:16px}
+.pi-x{color:#f87171}
+.pi-check{color:var(--cyan2)}
 
 /* TESTIMONIALS */
 .testimonials{background:var(--bg)}
@@ -697,24 +767,36 @@ h2.section-title{
 }
 .final-cta-glow{
   position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(59,130,246,.12) 0%,transparent 70%);
+  background:radial-gradient(ellipse 55% 75% at 50% 50%,rgba(59,130,246,.16) 0%,transparent 70%);
+}
+.final-cta .section-inner{
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--border2);border-radius:24px;
+  padding:64px 40px;
+  box-shadow:var(--shadow-lg),0 0 80px -30px rgba(59,130,246,.4);
 }
 .final-cta h2{
-  font-size:clamp(2rem,4vw,3.25rem);
-  font-weight:700;letter-spacing:-.03em;
-  margin-bottom:20px;
+  font-family:var(--font-display);
+  font-size:clamp(2.1rem,4vw,3.2rem);
+  font-weight:800;letter-spacing:-.035em;
+  margin-bottom:18px;
 }
 .final-cta p{
-  font-size:1.125rem;color:var(--text2);
-  max-width:580px;margin:0 auto 44px;line-height:1.7;
+  font-size:1.1rem;color:var(--text2);
+  max-width:560px;margin:0 auto 40px;line-height:1.65;
 }
-.final-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.final-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.final-cta-btns .btn-primary{font-size:1.0625rem;padding:16px 36px}
 
 /* PLATFORM VIDEO */
 .platform-video-wrap{
-  position:relative;width:100%;height:220px;
-  background:var(--bg3);border-bottom:1px solid var(--border);
+  position:relative;width:100%;height:208px;
+  background:var(--bg3);border-bottom:1px solid var(--border2);
   overflow:hidden;
+}
+.platform-video-wrap::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  box-shadow:0 -40px 60px -30px rgba(0,0,0,.6) inset;
 }
 .platform-video-wrap iframe{
   position:absolute;top:0;left:0;width:100%;height:100%;border:none;
@@ -744,7 +826,7 @@ h2.section-title{
   color:var(--accent2);margin-bottom:12px;display:flex;align-items:center;gap:6px;
 }
 .modal-tag::before{content:'';width:16px;height:1px;background:var(--accent2)}
-.modal-box h3{font-size:1.625rem;font-weight:700;letter-spacing:-.025em;margin-bottom:8px}
+.modal-box h3{font-family:var(--font-display);font-size:1.7rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
 .modal-box .modal-sub{font-size:.9rem;color:var(--text2);margin-bottom:32px;line-height:1.6}
 .form-group{margin-bottom:18px}
 .form-group label{
@@ -807,42 +889,42 @@ h2.section-title{
   display:flex;align-items:center;justify-content:center;
   font-size:28px;margin:0 auto 20px;
 }
-.thank-you h3{font-size:1.5rem;font-weight:700;margin-bottom:10px;letter-spacing:-.02em}
+.thank-you h3{font-family:var(--font-display);font-size:1.55rem;font-weight:800;margin-bottom:10px;letter-spacing:-.03em}
 .thank-you p{font-size:.9375rem;color:var(--text2);line-height:1.6;max-width:360px;margin:0 auto 28px}
 
 /* FOOTER */
 footer{
-  background:#090b0d;border-top:1px solid var(--border);
-  padding:64px 5% 32px;
+  background:#06070a;border-top:1px solid var(--border2);
+  padding:72px 5% 32px;position:relative;z-index:2;
 }
-.footer-inner{max-width:1300px;margin:0 auto}
+.footer-inner{max-width:var(--maxw);margin:0 auto}
 .footer-top{
   display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:48px;margin-bottom:64px;
+  gap:48px;margin-bottom:56px;
 }
 .footer-brand p{
   font-size:.875rem;color:var(--text3);margin-top:16px;
-  line-height:1.6;max-width:280px;
+  line-height:1.65;max-width:300px;
 }
-.footer-social{display:flex;gap:12px;margin-top:24px}
+.footer-social{display:flex;gap:10px;margin-top:24px}
 .social-btn{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border2);
   display:flex;align-items:center;justify-content:center;
   color:var(--text3);font-size:14px;cursor:pointer;
   transition:.2s;text-decoration:none;
 }
-.social-btn:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3);color:var(--accent2)}
+.social-btn:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3);color:var(--accent2);transform:translateY(-2px)}
 .yt-btn:hover{background:rgba(255,0,0,.12)!important;border-color:rgba(255,0,0,.35)!important;color:#ff4444!important}
 .footer-col h5{
-  font-size:.8125rem;font-weight:700;letter-spacing:.06em;
+  font-size:.78rem;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--text3);margin-bottom:16px;
 }
 .footer-col a{
-  display:block;font-size:.875rem;color:var(--text3);
-  padding:4px 0;transition:.15s;
+  display:block;font-size:.875rem;color:var(--text2);
+  padding:5px 0;transition:.15s;width:fit-content;
 }
-.footer-col a:hover{color:var(--text)}
+.footer-col a:hover{color:var(--text);transform:translateX(2px)}
 .footer-bottom{
   display:flex;align-items:center;justify-content:space-between;
   padding-top:24px;border-top:1px solid var(--border);
@@ -885,6 +967,52 @@ footer{
 </head>
 <body>
 
+<!-- ICON SPRITE (monoline, inherits currentColor) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24"><path d="m2 2 20 20"/><path d="M5.8 5.8A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.3-.2"/><path d="M21.5 16.5A4.5 4.5 0 0 0 17.5 10h-1.8A7 7 0 0 0 10 5.1"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+    <symbol id="i-smartphone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-workflow" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+    <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.5 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2a1 1 0 0 0 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3a2.4 2.4 0 0 0-1.8-.7H5a1.6 1.6 0 0 0-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4a1 1 0 0 0 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8z"/></symbol>
+    <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 16v-4a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v4"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l3 3v5a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M9 18h6"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3 13.9 8.6 19.5 10.5 13.9 12.4 12 18 10.1 12.4 4.5 10.5 10.1 8.6z"/><path d="m19 14 .6 1.8 1.9.7-1.9.7-.6 1.8-.6-1.8-1.9-.7 1.9-.7z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M9 6h.01M9 10h.01M9 14h.01M15 6h.01M15 10h.01M15 14h.01"/></symbol>
+    <symbol id="i-warehouse" viewBox="0 0 24 24"><path d="M22 8.3V20a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8.3a2 2 0 0 1 1.3-1.9l8-3.2a2 2 0 0 1 1.4 0l8 3.2A2 2 0 0 1 22 8.3Z"/><path d="M6 21V11h12v10"/><path d="M6 15h12"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.5 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M8 13h8M8 17h6"/></symbol>
+    <symbol id="i-bar-chart" viewBox="0 0 24 24"><line x1="3" y1="21" x2="21" y2="21"/><path d="M7 21V11M12 21V5M17 21v-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-credit-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 9l5-5 5 5"/><line x1="12" y1="4" x2="12" y2="16"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 3.9A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-check-square" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.7 18-8-14a2 2 0 0 0-3.5 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m9 11 3 3L22 4"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+  </defs>
+</svg>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo-link">
@@ -908,122 +1036,18 @@ footer{
   <div class="hero-glow"></div>
   <div class="hero-badge">
     <span>Now available for all operational businesses</span>
+    <span class="badge-pill">Live in days</span>
   </div>
   <h1>Replace Spreadsheet Chaos With <em>Intelligent Business Portals</em></h1>
   <p class="hero-sub">FlowCetra helps businesses eliminate repetitive spreadsheet work, manual data entry, and scattered communication with clean operational web apps built for real workflows.</p>
   <div class="hero-btns">
-    <a href="#platforms"><button class="btn-secondary no-modal">See Live Systems →</button></a>
+    <button class="btn-primary open-modal">Get Started <svg class="ic"><use href="#i-arrow-right"/></svg></button>
+    <a href="#platforms"><button class="btn-secondary no-modal">See Live Systems <svg class="ic"><use href="#i-play"/></svg></button></a>
   </div>
-  <div class="hero-dashboard">
-    <div class="dashboard-wrapper">
-      <div class="dashboard-bar">
-        <div class="db-dot r"></div>
-        <div class="db-dot y"></div>
-        <div class="db-dot g"></div>
-        <div class="db-url">app.flowcetra.com/dashboard</div>
-      </div>
-      <div class="dashboard-inner">
-        <div class="db-sidebar">
-          <div class="db-sidebar-header">Operations</div>
-          <div class="db-nav-item active">
-            <div class="db-nav-icon">⊞</div> Dashboard
-          </div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">◈</div> Workflows
-          </div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">◉</div> Records
-          </div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">⊡</div> Invoices
-          </div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">◎</div> Dispatch
-          </div>
-          <div class="db-sidebar-header" style="margin-top:20px">Reports</div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">◈</div> Analytics
-          </div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">◉</div> Employees
-          </div>
-          <div class="db-nav-item">
-            <div class="db-nav-icon">⊡</div> Expenses
-          </div>
-        </div>
-        <div class="db-main">
-          <div class="db-topbar">
-            <div class="db-page-title">Operational Overview</div>
-            <div class="db-chips">
-              <div class="db-chip active">Today</div>
-              <div class="db-chip">Week</div>
-              <div class="db-chip">Month</div>
-            </div>
-          </div>
-          <div class="db-stats">
-            <div class="db-stat">
-              <div class="db-stat-label">Active Jobs</div>
-              <div class="db-stat-val" style="color:var(--accent2)">48</div>
-              <div class="db-stat-change up">↑ 12 from yesterday</div>
-            </div>
-            <div class="db-stat">
-              <div class="db-stat-label">Revenue Today</div>
-              <div class="db-stat-val" style="color:var(--green)">$14,280</div>
-              <div class="db-stat-change up">↑ 8.3%</div>
-            </div>
-            <div class="db-stat">
-              <div class="db-stat-label">Invoices Sent</div>
-              <div class="db-stat-val">23</div>
-              <div class="db-stat-change up">↑ 5 new</div>
-            </div>
-            <div class="db-stat">
-              <div class="db-stat-label">Pending Tasks</div>
-              <div class="db-stat-val" style="color:var(--amber)">7</div>
-              <div class="db-stat-change down">↓ needs attention</div>
-            </div>
-          </div>
-          <div class="db-grid2">
-            <div class="db-chart-box">
-              <div class="db-chart-title">Weekly Revenue</div>
-              <div class="mini-chart">
-                <div class="bar" style="height:40%"></div>
-                <div class="bar" style="height:65%"></div>
-                <div class="bar" style="height:50%"></div>
-                <div class="bar active" style="height:80%"></div>
-                <div class="bar" style="height:72%"></div>
-                <div class="bar" style="height:58%"></div>
-                <div class="bar active" style="height:90%"></div>
-              </div>
-            </div>
-            <div class="db-chart-box">
-              <div class="db-chart-title">Recent Jobs</div>
-              <div class="db-list">
-                <div class="db-list-item">
-                  <div class="db-list-dot" style="background:#3b82f6"></div>
-                  <span style="font-size:.75rem;flex:1">2018 Honda Civic</span>
-                  <div class="status-badge green">Done</div>
-                </div>
-                <div class="db-list-item">
-                  <div class="db-list-dot" style="background:#f59e0b"></div>
-                  <span style="font-size:.75rem;flex:1">Roof Repair #482</span>
-                  <div class="status-badge amber">Active</div>
-                </div>
-                <div class="db-list-item">
-                  <div class="db-list-dot" style="background:#06b6d4"></div>
-                  <span style="font-size:.75rem;flex:1">Dispatch Unit 7</span>
-                  <div class="status-badge blue">Transit</div>
-                </div>
-                <div class="db-list-item">
-                  <div class="db-list-dot" style="background:#10b981"></div>
-                  <span style="font-size:.75rem;flex:1">PPI Report #219</span>
-                  <div class="status-badge green">Sent</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="hero-microtrust">
+    <span><svg class="ic"><use href="#i-check-circle"/></svg> No monthly subscription</span>
+    <span><svg class="ic"><use href="#i-check-circle"/></svg> No hidden fees</span>
+    <span><svg class="ic"><use href="#i-check-circle"/></svg> Built for your workflow</span>
   </div>
 </section>
 
@@ -1031,36 +1055,36 @@ footer{
 <div class="value-strip">
   <div class="value-strip-inner">
     <div class="value-item">
-      <div class="value-icon">🚫</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-ban"/></svg></div>
       <div class="value-text">No Monthly Subscription</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">🚫</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-tag"/></svg></div>
       <div class="value-text">No Hidden Fees</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">🚫</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-cloud-off"/></svg></div>
       <div class="value-text">No Cloud Hosting Fees</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">🚫</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-key"/></svg></div>
       <div class="value-text">No Complex Login Systems</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">⚡</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-zap"/></svg></div>
       <div class="value-text">Fast Setup — Days Not Months</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">📱</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-smartphone"/></svg></div>
       <div class="value-text">Mobile-Friendly by Default</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">⚙️</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-workflow"/></svg></div>
       <div class="value-text">Built for Real Workflows</div>
     </div>
     <div class="value-item">
-      <div class="value-icon">🔓</div>
-      <div class="value-text">No Remote Training!</div>
+      <div class="value-icon"><svg class="ic"><use href="#i-shield-check"/></svg></div>
+      <div class="value-text">No Remote Training Required</div>
     </div>
   </div>
 </div>
@@ -1075,31 +1099,31 @@ footer{
     <p class="section-sub">Every operational business reaches a breaking point — the moment spreadsheets stop working. FlowCetra replaces that chaos with clarity.</p>
     <div class="ps-grid">
       <div class="ps-side before">
-        <div class="ps-label before">⚠ Before FlowCetra</div>
+        <div class="ps-label before"><svg class="ic"><use href="#i-alert"/></svg> Before FlowCetra</div>
         <div class="ps-items">
-          <div class="ps-item before"><div class="ps-item-icon">😤</div>Employees updating spreadsheets all day long</div>
-          <div class="ps-item before"><div class="ps-item-icon">🔁</div>Duplicate data entry across multiple files</div>
-          <div class="ps-item before"><div class="ps-item-icon">🔍</div>Searching through old Google Sheets for records</div>
-          <div class="ps-item before"><div class="ps-item-icon">📋</div>Manual invoice tracking and paper records</div>
-          <div class="ps-item before"><div class="ps-item-icon">📱</div>Field teams reporting through WhatsApp</div>
-          <div class="ps-item before"><div class="ps-item-icon">❓</div>Owners constantly asking employees for updates</div>
-          <div class="ps-item before"><div class="ps-item-icon">📁</div>Business data scattered across multiple files</div>
-          <div class="ps-item before"><div class="ps-item-icon">⏰</div>Hours wasted on repetitive administrative tasks</div>
-          <div class="ps-item before"><div class="ps-item-icon">📉</div>Poor visibility into actual business performance</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Employees updating spreadsheets all day long</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Duplicate data entry across multiple files</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Searching through old Google Sheets for records</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Manual invoice tracking and paper records</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Field teams reporting through WhatsApp</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Owners constantly asking employees for updates</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Business data scattered across multiple files</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Hours wasted on repetitive administrative tasks</div>
+          <div class="ps-item before"><svg class="ic ps-item-icon"><use href="#i-x"/></svg>Poor visibility into actual business performance</div>
         </div>
       </div>
       <div class="ps-side after">
-        <div class="ps-label after">✓ After FlowCetra</div>
+        <div class="ps-label after"><svg class="ic"><use href="#i-check-circle"/></svg> After FlowCetra</div>
         <div class="ps-items">
-          <div class="ps-item after"><div class="ps-item-icon">🎯</div>Centralized operational portal for every workflow</div>
-          <div class="ps-item after"><div class="ps-item-icon">⚡</div>Data entered once, visible everywhere instantly</div>
-          <div class="ps-item after"><div class="ps-item-icon">🔎</div>Instant smart search across all business records</div>
-          <div class="ps-item after"><div class="ps-item-icon">📄</div>One-click automated PDF invoice generation</div>
-          <div class="ps-item after"><div class="ps-item-icon">📊</div>Mobile-friendly dashboards for field teams</div>
-          <div class="ps-item after"><div class="ps-item-icon">📈</div>Automatic daily reports sent to your email</div>
-          <div class="ps-item after"><div class="ps-item-icon">🗂</div>All records organized and searchable in one place</div>
-          <div class="ps-item after"><div class="ps-item-icon">🤖</div>Workflow automation handles repetitive tasks</div>
-          <div class="ps-item after"><div class="ps-item-icon">👁</div>Real-time operational visibility and accountability</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Centralized operational portal for every workflow</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Data entered once, visible everywhere instantly</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Instant smart search across all business records</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>One-click automated PDF invoice generation</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Mobile-friendly dashboards for field teams</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Automatic daily reports sent to your email</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>All records organized and searchable in one place</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Workflow automation handles repetitive tasks</div>
+          <div class="ps-item after"><svg class="ic ps-item-icon"><use href="#i-check"/></svg>Real-time operational visibility and accountability</div>
         </div>
       </div>
     </div>
@@ -1109,9 +1133,9 @@ footer{
 <!-- PLATFORMS -->
 <section class="platforms" id="platforms">
   <div class="section-inner">
-    <div class="section-tag">Our Platforms</div>
+    <div class="section-tag">Our Platforms · Sample Projects</div>
     <h2 class="section-title">Operational Web App Built<br>for Real Businesses</h2>
-    <p class="section-sub">Each FlowCetra platform is purpose-built for a specific industry — not a generic tool adapted after the fact.</p>
+    <p class="section-sub">These are samples of completed projects we've delivered — each FlowCetra platform is purpose-built for a specific industry, not a generic tool adapted after the fact.</p>
     <div class="platforms-grid">
 
       <!-- Garaj.online -->
@@ -1166,6 +1190,19 @@ footer{
         </div>
       </div>
 
+      <!-- Dealership.work -->
+      <div class="platform-card">
+        <div class="platform-video-wrap">
+          <img src="https://ppi.is-best.net/pictures/dealershipwork.jpeg" alt="Dealership.work — Dealership Management Web App" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="platform-content">
+          <div class="platform-tag">Dealerships</div>
+          <h3>Dealership.work</h3>
+          <p>Operational platform built for car dealerships. Manage inventory, sales, customer records, and day-to-day dealership workflows in one connected system — no spreadsheets required.</p>
+          <a href="https://dealership.work" target="_blank"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1209,13 +1246,13 @@ footer{
         <h2 class="section-title">Receive Automatic Business Reports Without Manual Work</h2>
         <p class="section-sub" style="margin-bottom:36px">FlowCetra automatically organizes your operational data and sends daily or monthly reports directly to your email — no spreadsheet formatting required.</p>
         <div class="reporting-features">
-          <div class="rf-item"><div class="rf-check">✓</div>Automatic Daily Operational Reports</div>
-          <div class="rf-item"><div class="rf-check">✓</div>Monthly Performance Summaries via Email</div>
-          <div class="rf-item"><div class="rf-check">✓</div>Employee Activity Tracking & Accountability</div>
-          <div class="rf-item"><div class="rf-check">✓</div>Revenue & Expense Insights Dashboard</div>
-          <div class="rf-item"><div class="rf-check">✓</div>Workflow Completion Monitoring</div>
-          <div class="rf-item"><div class="rf-check">✓</div>One-Click Exportable PDF Reports</div>
-          <div class="rf-item"><div class="rf-check">✓</div>Inspection & Job Statistics Summaries</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>Automatic Daily Operational Reports</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>Monthly Performance Summaries via Email</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>Employee Activity Tracking & Accountability</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>Revenue & Expense Insights Dashboard</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>Workflow Completion Monitoring</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>One-Click Exportable PDF Reports</div>
+          <div class="rf-item"><div class="rf-check"><svg class="ic"><use href="#i-check"/></svg></div>Inspection & Job Statistics Summaries</div>
         </div>
       </div>
       <div class="reporting-visual">
@@ -1226,7 +1263,7 @@ footer{
         <div class="report-body">
           <div class="report-metric">
             <div class="rm-left">
-              <div class="rm-icon" style="background:rgba(16,185,129,.12)">💰</div>
+              <div class="rm-icon" style="background:rgba(16,185,129,.12);color:#34d399"><svg class="ic"><use href="#i-dollar"/></svg></div>
               <div>
                 <div class="rm-label">Revenue Today</div>
                 <div class="rm-val">$14,280</div>
@@ -1236,7 +1273,7 @@ footer{
           </div>
           <div class="report-metric">
             <div class="rm-left">
-              <div class="rm-icon" style="background:rgba(59,130,246,.12)">📋</div>
+              <div class="rm-icon" style="background:rgba(59,130,246,.12);color:var(--accent2)"><svg class="ic"><use href="#i-clipboard"/></svg></div>
               <div>
                 <div class="rm-label">Jobs Completed</div>
                 <div class="rm-val">12</div>
@@ -1246,7 +1283,7 @@ footer{
           </div>
           <div class="report-metric">
             <div class="rm-left">
-              <div class="rm-icon" style="background:rgba(245,158,11,.12)">👥</div>
+              <div class="rm-icon" style="background:rgba(245,158,11,.12);color:var(--amber)"><svg class="ic"><use href="#i-users"/></svg></div>
               <div>
                 <div class="rm-label">Employee Activity</div>
                 <div class="rm-val">6 Active</div>
@@ -1263,8 +1300,8 @@ footer{
               <span>78% collected</span><span style="color:var(--green)">$11,138 / $14,280</span>
             </div>
           </div>
-          <div style="padding:12px 14px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;font-size:.8rem;color:var(--accent2)">
-            📧 Full report sent to owner@yourbusiness.com
+          <div style="display:flex;align-items:center;gap:9px;padding:12px 14px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:9px;font-size:.8rem;color:var(--accent2)">
+            <svg class="ic" style="font-size:15px"><use href="#i-mail"/></svg> Full report sent to owner@yourbusiness.com
           </div>
         </div>
       </div>
@@ -1279,18 +1316,18 @@ footer{
     <h2 class="section-title">Built for the Businesses<br>That Keep the World Moving</h2>
     <p class="section-sub">FlowCetra platforms are used by operational businesses across industries that rely on real workflows — not web app demos.</p>
     <div class="industries-grid">
-      <div class="industry-card"><span class="industry-icon">🚗</span><h4>Auto Dealerships</h4></div>
-      <div class="industry-card"><span class="industry-icon">🔧</span><h4>Repair Shops</h4></div>
-      <div class="industry-card"><span class="industry-icon">🏗</span><h4>Contractors</h4></div>
-      <div class="industry-card"><span class="industry-icon">🚛</span><h4>Towing Companies</h4></div>
-      <div class="industry-card"><span class="industry-icon">📋</span><h4>Inspection Companies</h4></div>
-      <div class="industry-card"><span class="industry-icon">📦</span><h4>Logistics Dispatch</h4></div>
-      <div class="industry-card"><span class="industry-icon">🏠</span><h4>Roofing Companies</h4></div>
-      <div class="industry-card"><span class="industry-icon">🧹</span><h4>Cleaning Companies</h4></div>
-      <div class="industry-card"><span class="industry-icon">🏢</span><h4>Property Management</h4></div>
-      <div class="industry-card"><span class="industry-icon">🏭</span><h4>Warehouses</h4></div>
-      <div class="industry-card"><span class="industry-icon">🚚</span><h4>Moving Companies</h4></div>
-      <div class="industry-card"><span class="industry-icon">📑</span><h4>Insurance Adjusters</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-car"/></svg></span><h4>Auto Dealerships</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-wrench"/></svg></span><h4>Repair Shops</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-hardhat"/></svg></span><h4>Contractors</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-truck"/></svg></span><h4>Towing Companies</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-clipboard"/></svg></span><h4>Inspection Companies</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-route"/></svg></span><h4>Logistics Dispatch</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-home"/></svg></span><h4>Roofing Companies</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-sparkles"/></svg></span><h4>Cleaning Companies</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-building"/></svg></span><h4>Property Management</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-warehouse"/></svg></span><h4>Warehouses</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-package"/></svg></span><h4>Moving Companies</h4></div>
+      <div class="industry-card"><span class="industry-icon"><svg class="ic"><use href="#i-shield"/></svg></span><h4>Insurance Adjusters</h4></div>
     </div>
   </div>
 </section>
@@ -1302,21 +1339,21 @@ footer{
     <h2 class="section-title">Everything Your Operations<br>Actually Need</h2>
     <p class="section-sub">Every FlowCetra platform comes packed with the tools that real operational businesses use every single day.</p>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">👤</div><h4>Employee Dashboards</h4><p>Role-based access with personalized views for every team member in your organization.</p></div>
-      <div class="feature-card"><div class="feature-icon">📱</div><h4>Mobile Access</h4><p>Full platform functionality on any mobile device — no app store download required.</p></div>
-      <div class="feature-card"><div class="feature-icon">🔍</div><h4>Smart Search</h4><p>Instantly search every record, invoice, job, or customer across your entire database.</p></div>
-      <div class="feature-card"><div class="feature-icon">📄</div><h4>PDF Generation</h4><p>One-click professional PDF reports, invoices, and inspection forms sent automatically.</p></div>
-      <div class="feature-card"><div class="feature-icon">📊</div><h4>Operational Analytics</h4><p>Real-time dashboards showing the metrics that matter to your specific operation.</p></div>
-      <div class="feature-card"><div class="feature-icon">🔒</div><h4>Role Permissions</h4><p>Control exactly what each employee can see, edit, and manage in the system.</p></div>
-      <div class="feature-card"><div class="feature-icon">💳</div><h4>Expense Tracking</h4><p>Track every business expense with categorization, reporting, and budget management.</p></div>
-      <div class="feature-card"><div class="feature-icon">⚡</div><h4>Workflow Automation</h4><p>Automate repetitive processes so your team focuses on work that actually matters.</p></div>
-      <div class="feature-card"><div class="feature-icon">👥</div><h4>Customer Records</h4><p>Centralized customer history with full job, invoice, and communication logs.</p></div>
-      <div class="feature-card"><div class="feature-icon">📅</div><h4>Scheduling Systems</h4><p>Manage appointments, job assignments, and team availability from one calendar view.</p></div>
-      <div class="feature-card"><div class="feature-icon">📂</div><h4>File Uploads</h4><p>Attach photos, documents, and signatures directly to records, jobs, and reports.</p></div>
-      <div class="feature-card"><div class="feature-icon">📬</div><h4>Automatic Email Reports</h4><p>Daily and monthly business summaries delivered to your inbox without any manual work.</p></div>
-      <div class="feature-card"><div class="feature-icon">🗂</div><h4>Centralized Records</h4><p>All business data in one organized, searchable system — no more scattered files.</p></div>
-      <div class="feature-card"><div class="feature-icon">📡</div><h4>Live Operational Tracking</h4><p>Real-time visibility into what's happening across your entire operation right now.</p></div>
-      <div class="feature-card"><div class="feature-icon">📋</div><h4>Task Management</h4><p>Assign, track, and complete tasks with full accountability and completion history.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-user"/></svg></div><h4>Employee Dashboards</h4><p>Role-based access with personalized views for every team member in your organization.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-smartphone"/></svg></div><h4>Mobile Access</h4><p>Full platform functionality on any mobile device — no app store download required.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-search"/></svg></div><h4>Smart Search</h4><p>Instantly search every record, invoice, job, or customer across your entire database.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-file-text"/></svg></div><h4>PDF Generation</h4><p>One-click professional PDF reports, invoices, and inspection forms sent automatically.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-bar-chart"/></svg></div><h4>Operational Analytics</h4><p>Real-time dashboards showing the metrics that matter to your specific operation.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-lock"/></svg></div><h4>Role Permissions</h4><p>Control exactly what each employee can see, edit, and manage in the system.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-credit-card"/></svg></div><h4>Expense Tracking</h4><p>Track every business expense with categorization, reporting, and budget management.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-zap"/></svg></div><h4>Workflow Automation</h4><p>Automate repetitive processes so your team focuses on work that actually matters.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-users"/></svg></div><h4>Customer Records</h4><p>Centralized customer history with full job, invoice, and communication logs.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-calendar"/></svg></div><h4>Scheduling Systems</h4><p>Manage appointments, job assignments, and team availability from one calendar view.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-upload"/></svg></div><h4>File Uploads</h4><p>Attach photos, documents, and signatures directly to records, jobs, and reports.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-mail"/></svg></div><h4>Automatic Email Reports</h4><p>Daily and monthly business summaries delivered to your inbox without any manual work.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-folder"/></svg></div><h4>Centralized Records</h4><p>All business data in one organized, searchable system — no more scattered files.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-activity"/></svg></div><h4>Live Operational Tracking</h4><p>Real-time visibility into what's happening across your entire operation right now.</p></div>
+      <div class="feature-card"><div class="feature-icon"><svg class="ic"><use href="#i-check-square"/></svg></div><h4>Task Management</h4><p>Assign, track, and complete tasks with full accountability and completion history.</p></div>
     </div>
   </div>
 </section>
@@ -1331,29 +1368,29 @@ footer{
       <div class="pricing-card old">
         <div class="pricing-label">Traditional SaaS Subscriptions</div>
         <div class="pricing-items">
-          <div class="pricing-item"><span class="pi-x">✗</span> Monthly fees per user</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Annual subscription contracts</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Cloud hosting charges on top</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Onboarding & training fees</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Complicated login systems</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Enterprise-level complexity</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Features you'll never use</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Hidden fees at renewal</div>
-          <div class="pricing-item"><span class="pi-x">✗</span> Built for generic workflows</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Monthly fees per user</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Annual subscription contracts</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Cloud hosting charges on top</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Onboarding & training fees</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Complicated login systems</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Enterprise-level complexity</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Features you'll never use</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Hidden fees at renewal</div>
+          <div class="pricing-item"><span class="pi-x"><svg class="ic"><use href="#i-x"/></svg></span> Built for generic workflows</div>
         </div>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-label">FlowCetra Operational Platforms</div>
         <div class="pricing-items">
-          <div class="pricing-item"><span class="pi-check">✓</span> No monthly subscription</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> No hidden fees — ever</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> No cloud hosting costs</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> No remote training fees</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> No complicated sign-in systems</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> Fast setup in days</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> Simple ownership model</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> Mobile-friendly out of the box</div>
-          <div class="pricing-item"><span class="pi-check">✓</span> Built specifically for your workflow</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> No monthly subscription</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> No hidden fees — ever</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> No cloud hosting costs</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> No remote training fees</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> No complicated sign-in systems</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> Fast setup in days</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> Simple ownership model</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> Mobile-friendly out of the box</div>
+          <div class="pricing-item"><span class="pi-check"><svg class="ic"><use href="#i-check"/></svg></span> Built specifically for your workflow</div>
         </div>
       </div>
     </div>
@@ -1368,7 +1405,7 @@ footer{
     <h2 class="section-title" style="max-width:700px;margin:0 auto 20px">Operate Smarter Without<br>Subscription Headaches</h2>
     <p>FlowCetra gives businesses modern operational web app without recurring SaaS costs, repetitive spreadsheet work, or unnecessary complexity.</p>
     <div class="final-cta-btns">
-      <button class="btn-secondary open-modal" style="font-size:1.0625rem;padding:16px 36px">Get in Touch →</button>
+      <button class="btn-primary open-modal">Get in Touch <svg class="ic"><use href="#i-arrow-right"/></svg></button>
     </div>
   </div>
 </section>
@@ -1395,6 +1432,7 @@ footer{
         <a href="https://ppipro.click" target="_blank">PPIPro.click</a>
         <a href="https://kia.today" target="_blank">Kia.today</a>
         <a href="https://expn.site" target="_blank">Expn.site</a>
+        <a href="https://dealership.work" target="_blank">Dealership.work</a>
       </div>
       
     </div>
@@ -1463,7 +1501,7 @@ footer{
 
     <!-- Thank you state -->
     <div class="thank-you" id="thankYou">
-      <div class="ty-icon">✓</div>
+      <div class="ty-icon"><svg class="ic" style="stroke-width:2"><use href="#i-check"/></svg></div>
       <h3>Message Received!</h3>
       <p>Thank you for reaching out. A member of the FlowCetra team will be in touch within one business day.</p>
       <button class="btn-primary" onclick="closeModal()" style="margin:0 auto;display:block">Back to Site</button>
@@ -1490,10 +1528,10 @@ document.querySelectorAll('.platform-card, .feature-card, .industry-card, .testi
 });
 
 // Nav scroll effect
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  nav.style.borderBottomColor = scrollY > 40 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.07)';
-});
+const navEl = document.querySelector('nav');
+const onScroll = () => navEl.classList.toggle('scrolled', window.scrollY > 24);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
 
 // Staggered card animations
 document.querySelectorAll('.platforms-grid, .features-grid, .industries-grid, .testimonials-grid').forEach(grid => {
