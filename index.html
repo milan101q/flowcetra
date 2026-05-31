@@ -796,6 +796,24 @@ footer{
   .trust-bar{gap:28px}
   .ps-image-wrapper { height: 180px; }
 }
+/* ===== Professional polish (additive — no structural/behavior changes) ===== */
+/* Equal-height platform cards with CTAs aligned along a common baseline. */
+.platform-card{display:flex;flex-direction:column}
+.platform-content{display:flex;flex-direction:column;flex:1}
+.platform-card p{flex:1 0 auto}
+.platform-tag{align-self:flex-start}
+.platform-content > a{align-self:flex-start;margin-top:auto}
+/* Title picks up the brand gradient on hover for a refined, intentional feel. */
+.platform-card h3{transition:color .25s ease,background .25s ease}
+.platform-card:hover h3{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+/* Slightly smoother media reveal inside cards. */
+.platform-video-wrap iframe,.platform-video-wrap img{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.platform-card:hover .platform-video-wrap img{transform:scale(1.03)}
+/* Anchored sections clear the fixed navbar when jumped to. */
+section[id]{scroll-margin-top:92px}
 </style>
 </head>
 <body>
@@ -987,7 +1005,7 @@ footer{
         </div>
         <div class="platform-content">
           <div class="platform-tag">Automotive</div>
-          <h3>Garaj.online</h3>
+          <h3>Auto Shop Management</h3>
           <p>Operational platform for mechanic shops and automotive businesses. Track vehicle history, repair jobs, expenses, invoices, inspections, and employee activity in one system.</p>
           <a href="https://garaj.online" target="_blank"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
         </div>
@@ -1000,7 +1018,7 @@ footer{
         </div>
         <div class="platform-content">
           <div class="platform-tag">Inspections</div>
-          <h3>PPIPro.click</h3>
+          <h3>Vehicle Inspection Reports</h3>
           <p>Professional pre-purchase inspection platform with instant PDF generation, mobile reporting workflows, and structured inspection management for technicians and buyers.</p>
           <a href="https://ppipro.click" target="_blank"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
         </div>
@@ -1013,9 +1031,9 @@ footer{
         </div>
         <div class="platform-content">
           <div class="platform-tag">Contractors</div>
-          <h3>Kia.today</h3>
+          <h3>Contractor Invoicing &amp; Projects</h3>
           <p>Contractor invoicing and remodeling workflow platform designed for construction and field service businesses. Manage projects, track labor, and generate invoices instantly.</p>
-          <a href="https://kia.today" target="_blank"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
+          <a href="https://script.google.com/macros/s/AKfycbzw8PPWy8cl-e_obI_bVZ1NuFnHAYdBDKIAndKQ9EKe4rWjaXkr2LEx2Emf9oxYifAe/exec" target="_blank" rel="noopener"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
         </div>
       </div>
 
@@ -1026,7 +1044,7 @@ footer{
         </div>
         <div class="platform-content">
           <div class="platform-tag">Finance</div>
-          <h3>Expn.site</h3>
+          <h3>Expense Tracking &amp; Budgeting</h3>
           <p>Modern expense tracking and operational budgeting web app for teams, departments, and service businesses. A real-time financial portal on top of a Google Sheet you own.</p>
           <a href="https://expn.site" target="_blank"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
         </div>
@@ -1039,7 +1057,7 @@ footer{
         </div>
         <div class="platform-content">
           <div class="platform-tag">Dealerships</div>
-          <h3>Dealership.work</h3>
+          <h3>Dealership Management</h3>
           <p>Operational platform built for car dealerships. Manage inventory, sales, customer records, and day-to-day dealership workflows in one connected system, all powered by a Google Sheet you own and control.</p>
           <a href="https://dealership.work" target="_blank"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
         </div>
@@ -1263,11 +1281,11 @@ footer{
       </div>
       <div class="footer-col">
         <h5>Platforms</h5>
-        <a href="https://garaj.online" target="_blank">Garaj.online</a>
-        <a href="https://ppipro.click" target="_blank">PPIPro.click</a>
-        <a href="https://kia.today" target="_blank">Kia.today</a>
-        <a href="https://expn.site" target="_blank">Expn.site</a>
-        <a href="https://dealership.work" target="_blank">Dealership.work</a>
+        <a href="https://garaj.online" target="_blank">Auto Shop Management</a>
+        <a href="https://ppipro.click" target="_blank">Vehicle Inspection Reports</a>
+        <a href="https://script.google.com/macros/s/AKfycbzw8PPWy8cl-e_obI_bVZ1NuFnHAYdBDKIAndKQ9EKe4rWjaXkr2LEx2Emf9oxYifAe/exec" target="_blank" rel="noopener">Contractor Invoicing &amp; Projects</a>
+        <a href="https://expn.site" target="_blank">Expense Tracking &amp; Budgeting</a>
+        <a href="https://dealership.work" target="_blank">Dealership Management</a>
       </div>
       
     </div>
