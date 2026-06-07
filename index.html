@@ -6,7 +6,7 @@
 
 <title>FlowCetra — Operational Web Apps Built for Small Businesses</title>
 <meta name="description" content="FlowCetra builds custom operational web apps powered by Google Sheets — your data stays in a sheet you own, with a clean app and automation on top. Built for contractors, auto shops, inspectors, and more. No monthly subscriptions. Live in days.">
-<meta name="keywords" content="operational web app, business management software, contractor invoicing app, auto shop management, inspection platform, workflow automation, small business web app, FlowCetra, Garaj, PPIPro, Kia.today">
+<meta name="keywords" content="operational web app, business management software, contractor invoicing app, auto shop management, inspection platform, workflow automation, small business web app, Facebook Marketplace car listing, vehicle inventory posting, FlowCetra, Garaj, PPIPro, Kia.today, CarConnect">
 <meta name="author" content="FlowCetra">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://flowcetra.com/">
@@ -49,7 +49,8 @@
       {"@type": "Offer", "name": "PPIPro.click", "description": "Pre-purchase inspection platform with PDF generation", "url": "https://ppipro.click"},
       {"@type": "Offer", "name": "Kia.today", "description": "Contractor invoicing and remodeling workflow platform", "url": "https://kia.today"},
       {"@type": "Offer", "name": "Expn.site", "description": "Expense tracking and operational budgeting web app", "url": "https://expn.site"},
-      {"@type": "Offer", "name": "Dealership.work", "description": "Dealership management web app for inventory, sales, and customer workflows", "url": "https://dealership.work"}
+      {"@type": "Offer", "name": "Dealership.work", "description": "Dealership management web app for inventory, sales, and customer workflows", "url": "https://dealership.work"},
+      {"@type": "Offer", "name": "CarConnect.click", "description": "Done-for-you service that posts your entire vehicle inventory to Facebook Marketplace twice a month for $199/month", "url": "https://carconnect.click"}
     ]
   }
 }
@@ -424,6 +425,27 @@ h2.section-title{
   background:var(--bg3);border-bottom:1px solid var(--border2);
   overflow:hidden;
 }
+.cc-art{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 10%,rgba(34,211,238,.18),transparent 70%),
+    linear-gradient(160deg,#0f1622,#0b0d12 70%);
+}
+.cc-art::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 80%);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 80%);
+}
+.cc-car{width:96px;height:auto;position:relative;filter:drop-shadow(0 8px 20px rgba(34,211,238,.35));transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.platform-card:hover .cc-car{transform:translateY(-3px) scale(1.04)}
+.cc-wordmark{position:relative;font-family:var(--font-display);font-weight:800;font-size:1.5rem;letter-spacing:-.04em;color:var(--text)}
+.cc-wordmark em{font-style:normal;background:linear-gradient(115deg,#67e8f9,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cc-tagline{position:relative;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
 .platform-video-wrap::after{
   content:'';position:absolute;inset:0;pointer-events:none;
   box-shadow:0 -40px 60px -30px rgba(0,0,0,.6) inset;
@@ -1063,6 +1085,28 @@ section[id]{scroll-margin-top:92px}
         </div>
       </div>
 
+      <!-- CarConnect.click -->
+      <div class="platform-card">
+        <div class="platform-video-wrap cc-cover">
+          <div class="cc-art" aria-label="CarConnect — Facebook Marketplace vehicle listing service">
+            <svg class="cc-car" viewBox="0 0 64 40" fill="none" aria-hidden="true">
+              <path d="M6 30 q0 -2 2.5 -2.5 l3.5 -0.6 5 -7.2 q1.4 -1.9 3.8 -1.9 l11.2 0 q2.6 0 4.2 2.1 l4.6 6.4 3.4 0.9 q2.6 0.7 2.6 3.3 l0 3.5 q0 1.8 -1.9 1.8 l-2.1 0 a4.6 4.6 0 0 1 -9.1 0 l-12.4 0 a4.6 4.6 0 0 1 -9.1 0 l-1.4 0 q-1.9 0 -1.9 -1.8 z" fill="url(#ccg)"/>
+              <path d="M21.3 20.6 l9.9 0 3.2 5.4 -16.8 0 z" fill="#0c0e13"/>
+              <circle cx="17" cy="36" r="3.4" fill="#0c0e13"/><circle cx="38.5" cy="36" r="3.4" fill="#0c0e13"/>
+              <defs><linearGradient id="ccg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#67e8f9"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+            </svg>
+            <div class="cc-wordmark">Car<em>Connect</em></div>
+            <div class="cc-tagline">Live on Facebook Marketplace</div>
+          </div>
+        </div>
+        <div class="platform-content">
+          <div class="platform-tag">Marketplace Listing</div>
+          <h3>Facebook Marketplace Listing</h3>
+          <p>A done-for-you service that posts your entire vehicle inventory to Facebook Marketplace automatically, twice a month. Buyers contact you directly, and 20% of your plan goes toward boosting your listings — all from a flat $199/month.</p>
+          <a href="https://carconnect.click" target="_blank" rel="noopener"><button class="btn-try">Try It Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1286,6 +1330,7 @@ section[id]{scroll-margin-top:92px}
         <a href="https://script.google.com/macros/s/AKfycbzw8PPWy8cl-e_obI_bVZ1NuFnHAYdBDKIAndKQ9EKe4rWjaXkr2LEx2Emf9oxYifAe/exec" target="_blank" rel="noopener">Contractor Invoicing &amp; Projects</a>
         <a href="https://expn.site" target="_blank">Expense Tracking &amp; Budgeting</a>
         <a href="https://dealership.work" target="_blank">Dealership Management</a>
+        <a href="https://carconnect.click" target="_blank" rel="noopener">Facebook Marketplace Listing</a>
       </div>
       
     </div>
