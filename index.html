@@ -109,6 +109,18 @@ body{
   -moz-osx-font-smoothing:grayscale;
   font-feature-settings:"ss01" 1,"cv01" 1;
 }
+/* fixed site background image + dark scrim for readability */
+body::after{
+  content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,9,12,.80) 0%,rgba(8,9,12,.88) 45%,rgba(8,9,12,.93) 100%),
+    radial-gradient(ellipse 75% 55% at 50% 0%,rgba(8,9,12,.35),rgba(8,9,12,.9) 75%),
+    url("https://flowcetra.com/bgg.png");
+  background-size:cover,cover,cover;
+  background-position:center top,center top,center top;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
 body::before{
   content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
   opacity:.025;mix-blend-mode:overlay;
@@ -290,7 +302,7 @@ h2.section-title{
   max-width:620px;line-height:1.7;
 }
 
-.problem-solution{background:var(--bg2)}
+.problem-solution{background:rgba(10,12,17,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px}
 .ps-side{
   background:linear-gradient(180deg,var(--card2),var(--card));
@@ -349,7 +361,8 @@ h2.section-title{
 .ps-item.after .ps-item-icon{color:var(--cyan2)}
 
 .value-strip{
-  background:linear-gradient(180deg,var(--bg2),var(--bg));
+  background:linear-gradient(180deg,rgba(12,14,19,.55),rgba(8,9,12,.5));
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
   padding:44px 5%;
@@ -376,7 +389,7 @@ h2.section-title{
 }
 .value-text{font-size:.84rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
 
-.platforms{background:var(--bg)}
+.platforms{background:transparent}
 .platforms-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
   gap:22px;margin-top:60px;
@@ -454,7 +467,7 @@ h2.section-title{
   position:absolute;top:0;left:0;width:100%;height:100%;border:none;
 }
 
-.how-it-works{background:var(--bg2)}
+.how-it-works{background:rgba(10,12,17,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .steps{
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:0;margin-top:64px;
@@ -489,7 +502,7 @@ h2.section-title{
 .step h3{font-size:1.0625rem;font-weight:600;margin-bottom:9px;letter-spacing:-.02em}
 .step p{font-size:.875rem;color:var(--text2);line-height:1.6}
 
-.reporting{background:var(--bg)}
+.reporting{background:transparent}
 .reporting-inner{
   display:grid;grid-template-columns:1fr 1fr;
   gap:72px;align-items:center;
@@ -549,7 +562,7 @@ h2.section-title{
   flex-shrink:0;font-size:11px;color:#34d399;
 }
 
-.industries{background:var(--bg2)}
+.industries{background:rgba(10,12,17,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .industries-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));
   gap:14px;margin-top:60px;
@@ -578,7 +591,7 @@ h2.section-title{
 .industry-card:hover .industry-icon{color:var(--cyan2);border-color:rgba(34,211,238,.4)}
 .industry-card h4{font-size:.875rem;font-weight:600;letter-spacing:-.01em}
 
-.features{background:var(--bg)}
+.features{background:transparent}
 .features-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));
   gap:16px;margin-top:60px;
@@ -599,7 +612,7 @@ h2.section-title{
 .feature-card h4{font-size:.95rem;font-weight:600;margin-bottom:7px;letter-spacing:-.015em}
 .feature-card p{font-size:.8125rem;color:var(--text2);line-height:1.55}
 
-.pricing{background:var(--bg2)}
+.pricing{background:rgba(10,12,17,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;max-width:920px}
 .pricing-card{
   background:linear-gradient(180deg,var(--card2),var(--card));
@@ -633,7 +646,8 @@ h2.section-title{
 .pi-check{color:var(--cyan2)}
 
 .final-cta{
-  background:var(--bg2);
+  background:rgba(10,12,17,.58);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
   text-align:center;
   position:relative;overflow:hidden;
 }
@@ -752,7 +766,7 @@ h2.section-title{
 .thank-you p{font-size:.9375rem;color:var(--text2);line-height:1.6;max-width:360px;margin:0 auto 28px}
 
 footer{
-  background:#06070a;border-top:1px solid var(--border2);
+  background:rgba(6,7,10,.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border-top:1px solid var(--border2);
   padding:72px 5% 32px;position:relative;z-index:2;
 }
 .footer-inner{max-width:var(--maxw);margin:0 auto}
