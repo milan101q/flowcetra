@@ -823,6 +823,16 @@ footer{
   .footer-top{grid-template-columns:1fr 1fr}
   section{padding:72px 4%}
   .trust-divider{display:none}
+
+  /* mobile: drop the fixed background image (fixed-attachment is unreliable on
+     mobile and washes out gray) and restore the clean solid dark theme */
+  body::after{display:none}
+  .problem-solution,.how-it-works,.industries,.pricing,.final-cta{
+    background:var(--bg2);backdrop-filter:none;-webkit-backdrop-filter:none;
+  }
+  .platforms,.reporting,.features{background:var(--bg)}
+  .value-strip{background:linear-gradient(180deg,var(--bg2),var(--bg));backdrop-filter:none;-webkit-backdrop-filter:none}
+  footer{background:#06070a;backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 @media(max-width:480px){
   .steps{grid-template-columns:1fr}
