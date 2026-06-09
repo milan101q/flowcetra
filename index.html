@@ -369,7 +369,8 @@ header.scrolled .bar{border-bottom-color:var(--line);box-shadow:var(--shadow-1);
 
 /* hero */
 .hero{padding:78px 0 64px}
-.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:54px;align-items:center}
+.hero-grid{display:block}
+.hero .reveal{max-width:760px}
 .hero h1{font-size:clamp(2.5rem,5.3vw,4.05rem);font-weight:800;letter-spacing:-.035em;margin:20px 0 22px}
 .hero h1 em{font-style:normal;color:var(--sheet)}
 .hero-sub{font-size:1.15rem;color:var(--ink-2);max-width:520px;line-height:1.62;margin-bottom:30px}
@@ -714,38 +715,6 @@ section[id]{scroll-margin-top:82px}
           <span><svg class="ic"><use href="#i-check-circle"/></svg> No subscription</span>
           <span><svg class="ic"><use href="#i-check-circle"/></svg> Live in days</span>
           <span><svg class="ic"><use href="#i-check-circle"/></svg> Your data stays yours</span>
-        </div>
-      </div>
-
-      <div class="reveal demo" aria-label="A spreadsheet becoming an app">
-        <div class="demo-bar">
-          <span class="demo-dots"><i></i><i></i><i></i></span>
-          <span class="tt">jobs.gsheet</span>
-          <span class="live">live</span>
-        </div>
-        <div class="demo-body">
-          <div class="demo-side sheet">
-            <div class="demo-cap">Your sheet</div>
-            <div class="srow head"><div>Customer</div><div>Status</div><div class="num">Total</div></div>
-            <div class="srow"><div>R. Alvarez</div><div>Done</div><div class="num">$1,240</div></div>
-            <div class="srow"><div>M. Okafor</div><div>In bay</div><div class="num">$680</div></div>
-            <div class="srow"><div>J. Tran</div><div>Quoted</div><div class="num">$2,110</div></div>
-            <div class="srow"><div>K. Reyes</div><div>Done</div><div class="num">$540</div></div>
-          </div>
-          <div class="demo-eq" aria-hidden="true"><span>=</span></div>
-          <div class="demo-side">
-            <div class="demo-cap">Your app</div>
-            <div class="appcard">
-              <div class="ac-top"><span class="ac-name">R. Alvarez</span><span class="pill">Done</span></div>
-              <div class="ac-row"><span>Job</span><b>Brake service</b></div>
-              <div class="ac-row"><span>Invoice</span><b>$1,240</b></div>
-              <div class="ac-row"><span>Updated</span><b>7:14 AM</b></div>
-              <button class="ac-btn" type="button" tabindex="-1" aria-hidden="true">Send invoice PDF <svg class="ic"><use href="#i-arrow-right"/></svg></button>
-            </div>
-          </div>
-        </div>
-        <div class="demo-foot" aria-hidden="true">
-          <span class="ft on">Jobs</span><span class="ft">Customers</span><span class="ft">Invoices</span><span class="ft">Reports</span>
         </div>
       </div>
     </div>
