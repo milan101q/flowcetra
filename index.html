@@ -43,7 +43,7 @@
       "name": "Projects built by Web App Solutions LLC",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "item": {"@type": "WebSite", "name": "MyCarInspector.com", "url": "https://mycarinspector.com", "description": "Nationwide mobile pre-purchase vehicle inspection booking and dispatch marketplace.", "creator": {"@id": "https://flowcetra.com/#organization"}}},
-        {"@type": "ListItem", "position": 2, "item": {"@type": "WebSite", "name": "CarConnect.click", "url": "https://carconnect.click", "description": "Facebook Marketplace inventory posting service for car dealerships.", "creator": {"@id": "https://flowcetra.com/#organization"}}},
+        {"@type": "ListItem", "position": 2, "item": {"@type": "WebSite", "name": "CarConnect.click", "url": "https://carconnect.click", "description": "Platform that posts vehicles of car dealerships and auctions on Facebook Marketplace.", "creator": {"@id": "https://flowcetra.com/#organization"}}},
         {"@type": "ListItem", "position": 3, "item": {"@type": "WebSite", "name": "Nomz Kitchen", "url": "https://nomzkitchen.com", "description": "Menu website for a Persian kitchen and catering business, linked to its online ordering store.", "creator": {"@id": "https://flowcetra.com/#organization"}}},
         {"@type": "ListItem", "position": 4, "item": {"@type": "WebSite", "name": "Garaj.online", "url": "https://garaj.online", "creator": {"@id": "https://flowcetra.com/#organization"}}},
         {"@type": "ListItem", "position": 5, "item": {"@type": "WebSite", "name": "PPIPro.click", "url": "https://ppipro.click", "creator": {"@id": "https://flowcetra.com/#organization"}}},
@@ -63,8 +63,8 @@ body {
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
   color: #000000;
-  background-color: #008080;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23008080'/%3E%3Cpath d='M0 0h20v20H0zM20 20h20v20H20z' fill='%23007373'/%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%2300a0a0'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%2300a0a0'/%3E%3C/svg%3E");
+  background-color: #0B1840;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%230B1840'/%3E%3Ccircle cx='12' cy='18' r='1' fill='%23ffffff'/%3E%3Ccircle cx='58' cy='9' r='0.7' fill='%23a9c4ff'/%3E%3Ccircle cx='97' cy='31' r='1.2' fill='%23ffffff'/%3E%3Ccircle cx='34' cy='52' r='0.6' fill='%23ffffff'/%3E%3Ccircle cx='79' cy='66' r='0.9' fill='%23ffe9a8'/%3E%3Ccircle cx='8' cy='88' r='0.7' fill='%23a9c4ff'/%3E%3Ccircle cx='51' cy='101' r='1.1' fill='%23ffffff'/%3E%3Ccircle cx='108' cy='93' r='0.6' fill='%23ffffff'/%3E%3Cpath d='M70 40l1 3 3 1-3 1-1 3-1-3-3-1 3-1z' fill='%23ffffff' opacity='0.85'/%3E%3C/svg%3E");
 }
 a:link { color: #0000EE; }
 a:visited { color: #551A8B; }
@@ -410,7 +410,7 @@ table.grid tr:nth-child(even) td { background: #F0F0FF; }
   <div id="ticker">
     <marquee scrollamount="5">
       +++ HOT OFF THE PRESSES: MyCarInspector.com is LIVE &mdash; nationwide mobile car inspections, booked and dispatched online +++
-      CarConnect.click keeps dealership inventory posted on Facebook Marketplace +++
+      CarConnect.click posts dealership and auction vehicles on Facebook Marketplace +++
       NomzKitchen.com is serving up Persian food online +++
       Now taking new projects &mdash; sign our guestbook below for a FREE quote! +++
     </marquee>
@@ -486,7 +486,7 @@ table.grid tr:nth-child(even) td { background: #F0F0FF; }
               it, and we operate it.</p>
               <ul>
                 <li>Online booking with instant VIN decoding</li>
-                <li>Automatic dispatch to a network of 20+ vetted inspectors through a Telegram bot</li>
+                <li>Automatic dispatch to a network of 200+ vetted inspectors</li>
                 <li>Inspector app for checklists, photos and written findings, right from a phone</li>
                 <li>Professional PDF reports and secure online payment through Stripe</li>
                 <li>Admin back office for jobs, inspectors, payouts and alerts</li>
@@ -502,13 +502,14 @@ table.grid tr:nth-child(even) td { background: #F0F0FF; }
             <td class="medal"><span class="num">#2</span><span class="lbl">AUTOMATION</span></td>
             <td>
               <h3><a href="https://carconnect.click" target="_blank" rel="noopener">CarConnect.click</a></h3>
-              <div class="what">Facebook Marketplace posting for car dealerships, done for you.</div>
-              <p>Dealers hand us their inventory and we keep every unit posted on Facebook Marketplace,
-              where buyers message them directly. Under the hood is a posting platform we wrote ourselves.</p>
+              <div class="what">A platform that posts dealership and auction vehicles on Facebook Marketplace.</div>
+              <p>CarConnect takes the vehicles of car dealerships and auto auctions and posts them on
+              Facebook Marketplace, where buyers message the seller directly. It runs on a posting
+              platform we wrote ourselves.</p>
               <ul>
-                <li>Pulls inventory from 13 dealerships across 5 different dealer-website platforms</li>
-                <li>Scheduled, multi-account posting with photo watermarking</li>
-                <li>Control dashboard plus an online order form wired to Stripe payment</li>
+                <li>Posts vehicles from car dealerships and auto auctions on Facebook Marketplace</li>
+                <li>Puts every vehicle in front of Marketplace&rsquo;s local car buyers</li>
+                <li>Buyers contact the dealership or auction directly through Marketplace messages</li>
               </ul>
               <span class="role">Built &amp; operated by Web App Solutions LLC</span><br>
               <a class="visit" href="https://carconnect.click" target="_blank" rel="noopener">Visit CarConnect.click &raquo;</a>
@@ -518,7 +519,27 @@ table.grid tr:nth-child(even) td { background: #F0F0FF; }
 
         <table class="fame" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="medal"><span class="num">#3</span><span class="lbl">RESTAURANT</span></td>
+            <td class="medal"><span class="num">#3</span><span class="lbl">REPORTS</span></td>
+            <td>
+              <h3><a href="https://ppipro.click" target="_blank" rel="noopener">PPIPro.click</a></h3>
+              <div class="what">A platform for generating pre-purchase inspection reports.</div>
+              <p>PPIPro walks an inspector through the vehicle on a phone and turns what they find
+              into a professional, client-ready pre-purchase inspection report the moment the
+              inspection ends.</p>
+              <ul>
+                <li>Guided inspection checklist built for technicians in the field</li>
+                <li>Photo capture attached right to the findings</li>
+                <li>Instant client-ready PDF report, no retyping back at the office</li>
+              </ul>
+              <span class="role">Built by Web App Solutions LLC</span><br>
+              <a class="visit" href="https://ppipro.click" target="_blank" rel="noopener">Visit PPIPro.click &raquo;</a>
+            </td>
+          </tr>
+        </table>
+
+        <table class="fame" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="medal"><span class="num">#4</span><span class="lbl">RESTAURANT</span></td>
             <td>
               <h3><a href="https://nomzkitchen.com" target="_blank" rel="noopener">NomzKitchen.com</a><span class="new">NEW!</span></h3>
               <div class="what">A premium menu website for a Persian kitchen &amp; catering business.</div>
@@ -546,10 +567,6 @@ table.grid tr:nth-child(even) td { background: #F0F0FF; }
             <td>Auto shop management: vehicle history, repair jobs, parts, invoices, inspections and staff activity in one system.</td>
           </tr>
           <tr>
-            <td><a href="https://ppipro.click" target="_blank" rel="noopener"><b>PPIPro.click</b></a></td>
-            <td>Vehicle inspection and appraisal reports for technicians in the field, with photo capture and an instant client-ready PDF.</td>
-          </tr>
-          <tr>
             <td><a href="https://dealership.work" target="_blank" rel="noopener"><b>Dealership.work</b></a></td>
             <td>Used car dealership management: inventory, sales, customer records and the daily workflow of the lot.</td>
           </tr>
@@ -573,7 +590,7 @@ table.grid tr:nth-child(even) td { background: #F0F0FF; }
           <tr><th style="width:36%;">Service</th><th>For example</th></tr>
           <tr><td><b>Marketplaces &amp; booking platforms</b></td><td>Customers book, the system assigns the right person, everyone is notified, payment is collected. (See MyCarInspector.com.)</td></tr>
           <tr><td><b>Business websites</b></td><td>Fast, good-looking sites that connect to the tools you already use, like Square, Stripe or your booking system. (See NomzKitchen.com.)</td></tr>
-          <tr><td><b>Automation &amp; bots</b></td><td>Software that does the repetitive work for you: posting listings, sending alerts, chasing follow-ups. (See CarConnect.click.)</td></tr>
+          <tr><td><b>Automation &amp; bots</b></td><td>Software that does the repetitive work for you: posting vehicle listings, sending alerts, chasing follow-ups. (See CarConnect.click.)</td></tr>
           <tr><td><b>Custom business applications</b></td><td>Shop management, inspections, dealership inventory, invoicing, expenses &mdash; shaped around how your team actually works.</td></tr>
           <tr><td><b>Payments &amp; messaging</b></td><td>Stripe checkout, PDF invoices and reports, e-mail, SMS and Telegram notifications.</td></tr>
           <tr><td><b>Works on every phone</b></td><td>Everything we ship runs in a phone browser. No app store download required.</td></tr>
